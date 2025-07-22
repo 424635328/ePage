@@ -3,9 +3,9 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import { motion, useMotionValue, useTransform, type AnimationProps, type Transition, type TargetAndTransition, type MotionValue, type HTMLMotionProps } from 'framer-motion';
+import { motion, useMotionValue, useTransform, type Transition, type TargetAndTransition, type MotionValue, type HTMLMotionProps } from 'framer-motion';
 import React, { useState, useEffect, useMemo } from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes } from 'styled-components';  
 
 // ============================================================================
 // 1. 类型定义 (Type Definitions)
@@ -124,7 +124,7 @@ const GLITCH_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_./\\?*#@!$%&';
 // 5. 原子组件 (Atomic Components)
 // ============================================================================
 
-const GlassShard = React.memo(({ animation, style, ...props }: React.ComponentProps<typeof motion.div> & { animation: { animate: AnimationProps['animate'], transition: Transition } }) => (
+const GlassShard = React.memo(({ animation, style, ...props }: React.ComponentProps<typeof motion.div> & { animation: { animate: TargetAndTransition, transition: Transition } }) => (
     <motion.div className={cn('absolute inset-0 z-20', 'backdrop-blur-xl', 'bg-white/5', 'rounded-2xl shadow-2xl shadow-black/40', 'ring-1 ring-inset ring-white/10', 'after:absolute after:inset-0 after:rounded-2xl after:bg-gradient-to-br after:from-white/10 after:via-transparent after:to-transparent', 'will-change-transform')} animate={animation.animate} transition={animation.transition} style={{ rotate: style?.rotate }} {...props} />
 ));
 GlassShard.displayName = 'GlassShard';
