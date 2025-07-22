@@ -1,5 +1,3 @@
-// components/sections/HeroSection.tsx
-
 import React from 'react';
 import Link from 'next/link';
 import styles from './HeroSection.module.css'; // 导入该区块的专属样式
@@ -7,7 +5,11 @@ import styles from './HeroSection.module.css'; // 导入该区块的专属样式
 const HeroSection = () => {
   return (
     // 使用 <section> 语义化标签，并为其指定一个 id，方便页面内导航
-    <section id="hero" className={styles.heroContainer} >
+    // FIX: 添加 `snap-start` 类，使其成为一个滚动吸附点
+    <section 
+      id="hero" 
+      className={`${styles.heroContainer} snap-start`} 
+    >
       {/* 
         内容包装器，用于垂直居中和文本对齐 
         动态渐变背景是在 heroContainer 上实现的
@@ -31,7 +33,7 @@ const HeroSection = () => {
         它会指向下一个区块的id，例如 #about。
       */}
       <div className={styles.scrollDown}>
-        <a href="#about"> {/* 假设下一个区块的 id 是 'about' */}
+        <a href="#works"> {/* FIX: 指向下一个区块 #works */}
           <span></span>
         </a>
       </div>

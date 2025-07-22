@@ -6,6 +6,7 @@ import Header from "@/components/layout/Header"; // 导入我们刚刚创建的 
 import AuroraBackground from "@/components/layout/AuroraBackground";
 import StyledComponentsRegistry from "@/lib/registry"; // 导入 Styled Components 的注册组件
 import { Orbitron } from "next/font/google"; // 导入 Google 字体
+import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
   title: "我的个人网站",
@@ -48,7 +49,9 @@ export default function RootLayout({
             {children}
           </StyledComponentsRegistry>
         </main>
-        
+
+        {/* 页脚 */}
+        <Footer />
       </body>
     </html>
   );

@@ -1,6 +1,3 @@
-@import "tailwindcss";
-
-/* src/app/globals.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,6 +5,13 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+}
+
+html {
+  /* --- 新增：滚动吸附效果 --- */
+  scroll-behavior: smooth; /* 让页面内跳转（如点击锚链接）和吸附更平滑 */
+  scroll-snap-type: y mandatory; /* 在垂直 (y) 方向上强制吸附 */
+  scroll-padding-top: 80px; /* 为固定的Header留出空间，防止内容被遮挡 */
 }
 
 @theme inline {
