@@ -1,0 +1,117 @@
+/* components/Header.module.css */
+
+/* 
+ * 主 Header 容器样式
+ * position: fixed; -> 将 header 固定在视口顶部，滚动时不会消失。
+ * top, left, right -> 确保它横跨整个屏幕宽度。
+ * z-index -> 设置一个较高的层级，确保它显示在页面其他内容之上。
+ * transition -> 为背景颜色的变化添加平滑过渡效果（未来可能需要）。
+ */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transition: background-color 0.3s ease-in-out;
+  
+  /* 
+   * --- 关键的毛玻璃效果 ---
+   * 1. background-color: 使用带有 alpha 透明度的颜色 (rgba)。这是实现半透明的基础。
+   *    这里的 0.3 代表 30% 的不透明度。你可以根据喜好调整。
+   * 2. backdrop-filter: blur(10px); -> 这是实现背景模糊的核心属性。
+   *    它会模糊元素“背后”的内容。数值越大，模糊程度越高。
+   * 3. -webkit-backdrop-filter -> 兼容旧版的 Safari 浏览器。
+   * 4. border-bottom -> 添加一个微妙的底部边框，增强质感和边界感。
+   */
+  background-color: rgba(255, 255, 255, 0.3); /* 浅色毛玻璃 */
+  /* background-color: rgba(0, 0, 0, 0.3); */ /* 如果你的背景是浅色，可以尝试深色毛玻璃 */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* 
+ * 贴图容器
+ * position: absolute; -> 绝对定位，相对于 header。
+ * top, left -> 精确放置在左上角。
+ * 您可以调整 top 和 left 的值来微调贴图的位置。
+ */
+.stickerContainer {
+  position: absolute;
+  top: 8px; /* 距离顶部8像素 */
+  left: 15px; /* 距离左侧15像素 */
+}
+
+/* 
+ * 内容容器
+ * 负责排列 Logo 和导航链接。
+ * max-width & margin -> 经典的水平居中布局。
+ * display: flex -> 使用 Flexbox 进行布局。
+ * justify-content: space-between -> 将子元素（Logo 和 Nav）推向两端。
+ * align-items: center -> 垂直居中对齐。
+ * padding-left -> **这是为左上角贴图预留空间的关键**。
+ *   我们给容器一个较大的左内边距，把内容整体向右推。
+ *   这个值应该比你的贴图宽度稍大一些。 (贴图100px + 间距)
+ */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  padding-left: 150px; /* 为左侧100px宽的贴图留出空间 */
+  height: 80px; /* 定义 header 的高度 */
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo 样式 */
+.logo a {
+  font-size: 1.5rem; /* 字体大一点 */
+  font-weight: bold; /* 加粗 */
+  color: #1a1a1a; /* 深色字体，保证可读性 */
+  text-decoration: none; /* 去掉下划线 */
+}
+
+/* 导航链接容器 */
+.nav {
+  display: flex;
+  gap: 2rem; /* 链接之间的间距 */
+}
+
+/* 单个导航链接样式 */
+.navLink {
+  font-size: 1rem;
+  color: #333;
+  text-decoration: none;
+  position: relative;
+  padding: 0.5rem 0;
+  transition: color 0.3s ease; /* 颜色变化时的平滑过渡 */
+}
+
+/* 鼠标悬停在链接上时的效果 */
+.navLink:hover {
+  color: #0070f3; /* 悬停时变为蓝色，可以替换为你喜欢的主题色 */
+}
+
+/* 
+ * 悬停时添加一个下划线动效 (可选，但能提升体验)
+ * 使用伪元素 ::after 来创建下划线。
+ */
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #0070f3;
+  transform: scaleX(0); /* 初始状态下划线宽度为0 */
+  transform-origin: center;
+  transition: transform 0.3s ease; /* 宽度变化时的平滑过渡 */
+}
+
+.navLink:hover::after {
+  transform: scaleX(1); /* 悬停时下划线宽度变为100% */
+}
