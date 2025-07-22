@@ -1,33 +1,49 @@
 // app/page.tsx
 
 import HeroSection from '@/components/sections/HeroSection';
-// 未来你可以在这里导入更多区块组件
-// import AboutSection from '@/components/sections/AboutSection';
-// import ProjectsSection from '@/components/sections/ProjectsSection';
+import PlaceholderSection from '@/components/sections/PlaceholderSection';
 
 export default function Home() {
   return (
-    // 使用 <main> 标签来包裹主要内容
-    <main>
-      {/* --- 首屏区块 --- */}
+    <>
+      {/* HeroSection 保持透明，完全展示背景 */}
       <HeroSection />
 
       {/* 
-        ============================================================
-        ==  未来，你只需要在这里添加新的区块组件即可扩展页面内容  ==
-        ============================================================
-        
-        例如，创建一个 "关于我" 的区块:
-        1. 在 components/sections/ 中创建 AboutSection.tsx 和 AboutSection.module.css
-        2. 在本文件中取消下面的注释:
+        FIX: 为所有内容板块添加半透明背景和背景模糊效果。
+        这能确保文字在复杂的动画背景下依然清晰可读，并产生漂亮的层次感。
       */}
+      <PlaceholderSection 
+        id="works" 
+        title="个人作品"
+        className="bg-background/70 backdrop-blur-sm"
+      >
+        <p>这里是「个人作品」板块，等待你的精彩内容填充。</p>
+      </PlaceholderSection>
       
-      {/* --- 关于我区块 (示例) --- */}
-      {/* <AboutSection /> */}
+      <PlaceholderSection 
+        id="blog" 
+        title="博客文章"
+        className="bg-background/70 backdrop-blur-sm"
+      >
+        <p>这里是「博客文章」板块，等待你的精彩内容填充。</p>
+      </PlaceholderSection>
 
-      {/* --- 项目展示区块 (示例) --- */}
-      {/* <ProjectsSection /> */}
+      <PlaceholderSection 
+        id="about" 
+        title="关于我"
+        className="bg-background/70 backdrop-blur-sm"
+      >
+        <p>这里是「关于我」板块，等待你的精彩内容填充。</p>
+      </PlaceholderSection>
 
-    </main>
+      <PlaceholderSection 
+        id="contact" 
+        title="联系方式"
+        className="bg-background/70 backdrop-blur-sm"
+      >
+        <p>这里是「联系方式」板块，等待你的精彩内容填充。</p>
+      </PlaceholderSection>
+    </>
   );
 }
